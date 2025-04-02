@@ -1,5 +1,4 @@
-# UA
+# {{ objAppName.ua }}
 
 ## {{ objAppName.ua }}
-
-{{1+1}}
+[Політика приватності](/privacy-policy.md ':class=btn')
