@@ -47,6 +47,6 @@
 
 [Політика приватності](/privacy-policy.md ':class=btn')
 [Умови обслуговування](/terms-of-service.md ':class=btn')
-[Підтримка](/support.md ':class=btn_green')
+[Підтримка](/support.md ':class=btn')
 
 </div>
