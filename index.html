@@ -42,7 +42,6 @@
                 mounted() {
                     if (localStorage.getItem("THEME_DARK") === null && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
                         // dark mode - in user sustem
-                        localStorage.setItem("THEME_DARK", true);
                         document.body.classList.add('dark-theme');
                         Docsify.dom.find('head link[data-theme=\'dark\']').disabled = false;
                     }else{
