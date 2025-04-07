@@ -1,14 +1,32 @@
+<div class="grid lg:grid-cols-2 gap-10">
+   <div class="">
+      <div class="lg:hidden">
+
 ![app-logo](files/img/icon-128x128px.png ':no-zoom :class=center-me')
 
-# **{{ objAppName.ua }}**
+</div>
+<div class="hidden lg:block">
 
-## Розширення для Google Sheets™
+![app-logo](files/img/icon-128x128px.png ':no-zoom')      
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/sYJVCoxZo2c?si=qLpW9EfC6ddM2NHc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+# **{{ objMainSlogan.ua }}**
+
+#### {{ objSubSlogan.ua }}
 
 [Встановити (безкоштовно) (скоро)... <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3h7v7"/><path d="M10 14 21 3"/><path d="M21 14v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg>](# ':class=btn_green_huge')
 
 > Створено [bvstud.io](https://bvstud.io), доступно для встановлення з Google Workspace Marketplace™
+
+   </div>
+   <div class="">
+      <iframe width="560" height="415" src="https://www.youtube.com/embed/sYJVCoxZo2c?si=qLpW9EfC6ddM2NHc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+   </div>
+</div>
+
+
+
 
 ### Як це працює?
 
