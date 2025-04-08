@@ -91,7 +91,6 @@ header{
 /* Демонстраційна колонка з контентом */
 .content-column {
     margin: 40px auto;
-    padding: 30px;
     background-color: rgba(255, 255, 255, 0.85);
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
@@ -332,11 +331,9 @@ body .v-cloak {
 }
 
 section {
-    margin: 0px -30px;
-    padding: 0px 30px;
+    /* padding: 30px; */
 }
 
 footer {
-    margin: -30px;
-    padding: 30px;
+    /* padding: 30px; */
 }
