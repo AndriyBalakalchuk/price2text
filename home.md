@@ -15,7 +15,7 @@
 
 #### {{ objSubSlogan.ua }}
 
-<a :href="objAppDownload.link" target="_blank" class="btn_green_huge">{{objAppDownload.ua}} <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3h7v7"/><path d="M10 14 21 3"/><path d="M21 14v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg></a>
+<a :href="objAppDownload.link.ua" target="_blank" rel="noopener noreferrer" class="btn_green_huge">{{objAppDownload.ua}} <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3h7v7"/><path d="M10 14 21 3"/><path d="M21 14v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg></a>
 
 > Створено [bvstud.io](https://bvstud.io), доступно для встановлення з Google Workspace Marketplace™
 
@@ -48,7 +48,7 @@
 <p class="text-center">Ідеально підходить для рахунків, договорів, актів та інших фінансових документів, де потрібно дублювати суми словами.</p>
 </div>
 
-<div class="theme-bg-secondary p-8 rounded-lg card-hover" style="animation-delay: 0.2s;">
+<div class="theme-bg-secondary p-8 rounded-lg card-hover">
 <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6 mx-auto">
 <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
@@ -62,7 +62,7 @@
 </div>
 </div>
 
-<div class="theme-bg-secondary p-8 rounded-lg card-hover" style="animation-delay: 0.4s;">
+<div class="theme-bg-secondary p-8 rounded-lg card-hover">
 <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto">
 <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
@@ -309,7 +309,7 @@
 </ul>
 </div>
 <div class="px-6 pb-8">
-<a :href="objAppDownload.link" target="_blank" class="btn_green_huge flex items-center text-white" style="color: white !important;text-align: center !important;display: block;">{{objAppDownload.ua}}</a>
+<a :href="objAppDownload.link.ua" target="_blank" rel="noopener noreferrer" class="btn_green_huge flex items-center text-white" style="color: white !important;text-align: center !important;display: block;">{{objAppDownload.ua}}</a>
 </div>
 </div>
 
@@ -335,7 +335,7 @@
 <p class="text-xl mb-10">Встановіть додаток прямо зараз і почніть економити свій час!</p>
 
 <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6">
-<a :href="objAppDownload.link" target="_blank" class="bg-white hover:bg-gray-100 text-blue-600 px-8 py-4 rounded-full text-lg font-semibold transition duration-300 inline-flex items-center justify-center">
+<a :href="objAppDownload.link.ua" target="_blank" rel="noopener noreferrer" class="bg-white hover:bg-gray-100 text-blue-600 px-8 py-4 rounded-full text-lg font-semibold transition duration-300 inline-flex items-center justify-center">
 {{objAppDownload.ua}} <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3h7v7"/><path d="M10 14 21 3"/><path d="M21 14v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg>
 </a>
 </div>
@@ -475,7 +475,7 @@
 </div>
 
 <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-<p class="text-gray-400 mb-4 md:mb-0">© 2023 Число-Слово. Всі права захищені.</p>
+<p class="text-gray-400 mb-4 md:mb-0">© {{objAppName.ua}}. Всі права захищені.</p>
 </div>
 
 </div>
