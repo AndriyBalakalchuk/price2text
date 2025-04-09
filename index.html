@@ -2,196 +2,207 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta charset="UTF-8" />
-    <title>Price to text - Перетворення чисел у слова для Google Sheets™</title>
-    <link rel="icon" type="image/x-icon" href="files/img/icon-128x128px.png">
-    <link rel="stylesheet" href="files/css/vue.css" />
-    <link rel="stylesheet" data-theme="dark" href="files/css/dark.css" disabled />
-    <link rel="stylesheet" href="files/css/my.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body>
-    <header class="v-cloak shadow-md fixed w-full z-50">
-        <div class="container mx-auto px-6 py-3">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                    <img src="files/img/icon-128x128px.png" alt="Logo" class="w-8 h-8 mr-2">
-                    <a href="#" class="text-2xl font-bold" id="home-link">Price to text</a>
-                </div>
-                
-                <nav class="hidden md:flex space-x-8">
-                    <span class="theme-toggle" onclick="Docsify.dom.find('head link[data-theme=\'dark\']').disabled = !Docsify.dom.find('head link[data-theme=\'dark\']').disabled;document.body.classList.toggle('dark-theme');if(localStorage.getItem('THEME_DARK')===null){localStorage.setItem('THEME_DARK', true);}else{localStorage.setItem('THEME_DARK', !(localStorage.getItem('THEME_DARK')==='true'));}"></span>
-                </nav>
-                
-                <div class="md:ml-6 hidden md:block">
-                    <a href="#/" class="btn_green px-4 py-2 rounded-md transition duration-300 header-link-btn">Встановити (скоро)</a>
-                </div>
-                
-                <button class="md:hidden focus:outline-none" id="menu-btn" onclick="document.getElementById('mobile-menu').classList.toggle('hidden');">
-                    <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
-            
-            <!-- Mobile menu -->
-            <div class="md:hidden hidden mt-4" id="mobile-menu">
-                <div class="flex flex-col space-y-3 items-center" id="mobile-menu-items">
-                    <span class="theme-toggle" onclick="Docsify.dom.find('head link[data-theme=\'dark\']').disabled = !Docsify.dom.find('head link[data-theme=\'dark\']').disabled;document.body.classList.toggle('dark-theme');if(localStorage.getItem('THEME_DARK')===null){localStorage.setItem('THEME_DARK', true);}else{localStorage.setItem('THEME_DARK', !(localStorage.getItem('THEME_DARK')==='true'));}"></span>
-                    <a href="#/" target="_blank" class="btn_green_huge px-4 py-2 rounded-md transition duration-300 header-link-btn">Встановити (скоро)</a>
-                </div>
-            </div>
-        </div>
-    </header>
-    <div id="app"><div class="spinner-container"><div class="spinner"></div></div></div>
-    <script>
-        window.$docsify = {
-            loadSidebar: false, //показувати бічну панель
-            hideSidebar: true, //приховати бічну панель
-            loadNavbar: false, //показувати верхню панель
-            coverpage: false, //показувати сторінку з описом
-            auto2top: true, //прокрутка до початку сторінки при зміні адреси
-            homepage: 'home.md', //початкова сторінка
-            name: 'Price to text', //назва документа
-            executeScript: true, //виконання скриптів
-            themeColor: "#42b983", //колір теми
-            mergeNavbar: false, //об'єднання верхньої панелі з бічною на малих екранах
-            notFoundPage: {
-                '/': '_404.md',
-                '/en': 'en/_404.md',
-            },
-            vueGlobalOptions: {
-                data() {
-                    return {
-                        strSiteUrl: window.location.origin,
-                        objAppDownload: {"link":{"ua":"#/","en":"#/en/"},"ua":"Встановити (безкоштовно) (скоро)...","en":"Install (free) (soon)..."},
-                        objAppName: {"ua":'Ціна в текст',"en":'Price to text'},
-                        objMainSlogan: {"ua":'Перетворіть числа в слова автоматично!',"en":'Convert numbers to words automatically!'},
-                        objSubSlogan: {"ua":'Додаток для Google Sheets™, який спрощує вашу роботу з фінансовими документами.',"en":'An add-on for Google Sheets™ that simplifies your work with financial documents.'}
-                    };
-                },
-                mounted() {
-                    if (localStorage.getItem("THEME_DARK") === null && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                        // dark mode - in user sustem
-                        document.body.classList.add('dark-theme');
-                        Docsify.dom.find('head link[data-theme=\'dark\']').disabled = false;
-                    }else{
-                        //нама системного вибору або нема вибору взагалі
-                        if (localStorage.getItem("THEME_DARK") === "true") {
-                            //якщо є обрана темна тема то ставимо її, інакше лишаємо світлу
-                            document.body.classList.add('dark-theme');
-                            Docsify.dom.find('head link[data-theme=\'dark\']').disabled = false;
-                        }
-                    }
-                }
-            },
-            plugins: [
-                function (hook, vm) {                
-                    hook.afterEach(
-                        function (strHTML) {
-                            const objHeader = Docsify.dom.find('header');
-                            if (objHeader) {
-                                //прибрали клас котрий приховує елемент поки йде завантаження
-                                if(objHeader.classList.contains('v-cloak')){objHeader.classList.remove('v-cloak');}
-                                const objNavbar = objHeader.querySelector('nav');
-                                const objMobileMenu = objHeader.querySelector('#mobile-menu-items');
-                                if(objNavbar){
-                                    //прибрали класи котрі автоматично додав docsify
-                                    if(objNavbar.classList.contains('app-nav')){objNavbar.classList.remove('app-nav');}
-                                    if(objNavbar.classList.contains('no-badge')){objNavbar.classList.remove('no-badge');}
-                                    //перелік мов
-                                    const arrBaseLangLinks = [
-                                        {"strLink":"#/en","strTitle":"English","strId":"En-lang-switch","strDownloadButton":"Install (free) (soon)..."},
-                                        {"strLink":"#","strTitle":"Українською","strId":"Ua-lang-switch","strDownloadButton":"Встановити (безкоштовно) (скоро)..."}
-                                    ];
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<meta charset="UTF-8" />
+		<title>Price to text - Перетворення чисел у слова для Google Sheets™</title>
+		<link rel="icon" type="image/x-icon" href="files/img/icon-128x128px.png" />
+		<link rel="stylesheet" href="files/css/vue.css" />
+		<link rel="stylesheet" data-theme="dark" href="files/css/dark.css" disabled />
+		<link rel="stylesheet" href="files/css/my.css" />
+		<script src="https://cdn.tailwindcss.com"></script>
+	</head>
+	<body>
+		<header class="v-cloak shadow-md fixed w-full z-50">
+			<div class="container mx-auto px-6 py-3">
+				<div class="flex items-center justify-between">
+					<div class="flex items-center">
+						<img src="files/img/icon-128x128px.png" alt="Logo" class="w-8 h-8 mr-2" />
+						<a href="#" class="text-2xl font-bold" id="home-link">Price to text</a>
+					</div>
 
-                                    //створення посилань на поточну сторінку на іншу мову
-                                    for (let i = 0; i < arrBaseLangLinks.length; i++) {
-                                        let strCurentPage = vm.route.path;
-                                        let strCurentLang = arrBaseLangLinks[1].strId;
-                                        if(strCurentPage.indexOf("/en/") !== -1){
-                                            strCurentPage = strCurentPage.replace("/en/","/");
-                                            strCurentLang = arrBaseLangLinks[0].strId;
-                                        }
+					<nav class="hidden md:flex space-x-8">
+						<span class="theme-toggle" onclick="Docsify.dom.find('head link[data-theme=\'dark\']').disabled = !Docsify.dom.find('head link[data-theme=\'dark\']').disabled;document.body.classList.toggle('dark-theme');if(localStorage.getItem('THEME_DARK')===null){localStorage.setItem('THEME_DARK', true);}else{localStorage.setItem('THEME_DARK', !(localStorage.getItem('THEME_DARK')==='true'));}"></span>
+					</nav>
 
-                                        if(strCurentLang === arrBaseLangLinks[i].strId){
-                                            //заміна посилання в навбарі
-                                            if(objNavbar.querySelector("#"+arrBaseLangLinks[i].strId)){objNavbar.querySelector("#"+arrBaseLangLinks[i].strId).remove();}
-                                            if(objMobileMenu.querySelector("#"+arrBaseLangLinks[i].strId+"_mobile")) {objMobileMenu.querySelector("#"+arrBaseLangLinks[i].strId+"_mobile").remove();}
-                                            //заміна посилання в навбарі (назва біля логотипу на головну сторінку)
-                                            if( objHeader.querySelector("#home-link") ) {objHeader.querySelector("#home-link").href = arrBaseLangLinks[i].strLink+"/";}
-                                            //заміна напису на кнопці скачування в хедері
-                                            const arrButtons = objHeader.querySelectorAll('.header-link-btn');
-                                            if(arrButtons.length > 0){
-                                                for (let j = 0; j < arrButtons.length; j++) {
-                                                    if(arrButtons[j].innerHTML !== arrBaseLangLinks[i].strDownloadButton){
-                                                        arrButtons[j].innerHTML = arrBaseLangLinks[i].strDownloadButton;
-                                                    }
-                                                }
-                                            }
-                                        }else{
-                                            
-                                            if(!objNavbar.querySelector("#"+arrBaseLangLinks[i].strId)){
-                                                const objNavbarLink = document.createElement('a');
-                                                objNavbarLink.href = arrBaseLangLinks[i].strLink+strCurentPage;
-                                                objNavbarLink.id = arrBaseLangLinks[i].strId;
-                                                objNavbarLink.innerHTML = arrBaseLangLinks[i].strTitle;
-                                                objNavbarLink.classList.add('nav-link');
-                                                objNavbar.prepend(objNavbarLink);
-                                            }else{
-                                                objNavbar.querySelector("#"+arrBaseLangLinks[i].strId).href = arrBaseLangLinks[i].strLink+strCurentPage;
-                                            }
+					<div class="md:ml-6 hidden md:block">
+						<a href="#/" class="btn_green px-4 py-2 rounded-md transition duration-300 header-link-btn">Встановити (скоро)</a>
+					</div>
 
-                                            if(!objMobileMenu.querySelector("#"+arrBaseLangLinks[i].strId+"_mobile")){
-                                                const objNavbarLink = document.createElement('a');
-                                                objNavbarLink.href = arrBaseLangLinks[i].strLink+strCurentPage;
-                                                objNavbarLink.id = arrBaseLangLinks[i].strId+"_mobile";
-                                                objNavbarLink.innerHTML = arrBaseLangLinks[i].strTitle;
-                                                objNavbarLink.classList.add('nav-link');
-                                                objMobileMenu.prepend(objNavbarLink);
-                                            }else{
-                                                objMobileMenu.querySelector("#"+arrBaseLangLinks[i].strId+"_mobile").href = arrBaseLangLinks[i].strLink+strCurentPage;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            
-                            const objMainBlock = Docsify.dom.find('main');
-                            if(objMainBlock && !objMainBlock.classList.contains('background-done')) {
-                                objMainBlock.classList.add('background-done');
-                                const objBackContainer = document.createElement('div');
-                                objBackContainer.classList.add('background');
-                                objMainBlock.appendChild(objBackContainer);                            
-                                for(let i = 1; i < 4; i++) {
-                                    const objBooble = document.createElement('div');
-                                    objBooble.classList.add('blob');
-                                    objBooble.classList.add('blob'+i);
-                                    objBackContainer.appendChild(objBooble);
-                                }
-                            }
+					<button class="md:hidden focus:outline-none" id="menu-btn" onclick="document.getElementById('mobile-menu').classList.toggle('hidden');">
+						<svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+						</svg>
+					</button>
+				</div>
 
-                            const objArticleBlock = Docsify.dom.find('article');
-                            if(objArticleBlock && !objMainBlock.classList.contains('container')) {
-                                objArticleBlock.classList.add('container');
-                                objArticleBlock.classList.add('content-column');
-                            }
-                        }
-                    );
-                }
-            ]
-        };
-    </script>
-    <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
-    <!-- Пплагін збільшення зображень -->
-    <script src="//unpkg.com/docsify/lib/plugins/zoom-image.min.js">
-        mediumZoom('img', {
-            background: 'rgba(0, 0, 0, 0.8)' // Темний фон з прозорістю 80%
-        });
-    </script>
-  </body>
+				<!-- Mobile menu -->
+				<div class="md:hidden hidden mt-4" id="mobile-menu">
+					<div class="flex flex-col space-y-3 items-center" id="mobile-menu-items">
+						<span class="theme-toggle" onclick="Docsify.dom.find('head link[data-theme=\'dark\']').disabled = !Docsify.dom.find('head link[data-theme=\'dark\']').disabled;document.body.classList.toggle('dark-theme');if(localStorage.getItem('THEME_DARK')===null){localStorage.setItem('THEME_DARK', true);}else{localStorage.setItem('THEME_DARK', !(localStorage.getItem('THEME_DARK')==='true'));}"></span>
+						<a href="#/" target="_blank" class="btn_green_huge px-4 py-2 rounded-md transition duration-300 header-link-btn">Встановити (скоро)</a>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div id="app">
+			<div class="spinner-container"><div class="spinner"></div></div>
+		</div>
+		<script>
+			window.$docsify = {
+				loadSidebar: false, //показувати бічну панель
+				hideSidebar: true, //приховати бічну панель
+				loadNavbar: false, //показувати верхню панель
+				coverpage: false, //показувати сторінку з описом
+				auto2top: true, //прокрутка до початку сторінки при зміні адреси
+				homepage: 'home.md', //початкова сторінка
+				// name: '', //назва документа
+				executeScript: true, //виконання скриптів
+				themeColor: '#42b983', //колір теми
+				mergeNavbar: false, //об'єднання верхньої панелі з бічною на малих екранах
+				notFoundPage: {
+					'/': '_404.md',
+					'/en': 'en/_404.md',
+				},
+				vueGlobalOptions: {
+					data() {
+						return {
+							strSiteUrl: window.location.origin,
+							objAppDownload: { link: { ua: '#/', en: '#/en/' }, ua: 'Встановити (безкоштовно) (скоро)...', en: 'Install (free) (soon)...' },
+							objAppName: { ua: 'Ціна в текст', en: 'Price to text' },
+							objMainSlogan: { ua: 'Перетворіть числа в слова автоматично!', en: 'Convert numbers to words automatically!' },
+							objSubSlogan: { ua: 'Додаток для Google Sheets™, який спрощує вашу роботу з фінансовими документами.', en: 'An add-on for Google Sheets™ that simplifies your work with financial documents.' },
+						};
+					},
+					mounted() {
+						if (localStorage.getItem('THEME_DARK') === null && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+							// dark mode - in user sustem
+							document.body.classList.add('dark-theme');
+							Docsify.dom.find("head link[data-theme='dark']").disabled = false;
+						} else {
+							//нама системного вибору або нема вибору взагалі
+							if (localStorage.getItem('THEME_DARK') === 'true') {
+								//якщо є обрана темна тема то ставимо її, інакше лишаємо світлу
+								document.body.classList.add('dark-theme');
+								Docsify.dom.find("head link[data-theme='dark']").disabled = false;
+							}
+						}
+					},
+				},
+				plugins: [
+					function (hook, vm) {
+						hook.afterEach(function (strHTML) {
+							const objHeader = Docsify.dom.find('header');
+							if (objHeader) {
+								//прибрали клас котрий приховує елемент поки йде завантаження
+								if (objHeader.classList.contains('v-cloak')) {
+									objHeader.classList.remove('v-cloak');
+								}
+								const objNavbar = objHeader.querySelector('nav');
+								const objMobileMenu = objHeader.querySelector('#mobile-menu-items');
+								if (objNavbar) {
+									//прибрали класи котрі автоматично додав docsify
+									if (objNavbar.classList.contains('app-nav')) {
+										objNavbar.classList.remove('app-nav');
+									}
+									if (objNavbar.classList.contains('no-badge')) {
+										objNavbar.classList.remove('no-badge');
+									}
+									//перелік мов
+									const arrBaseLangLinks = [
+										{ strLink: '#/en', strTitle: 'English', strId: 'En-lang-switch', strDownloadButton: 'Install (free) (soon)...' },
+										{ strLink: '#', strTitle: 'Українською', strId: 'Ua-lang-switch', strDownloadButton: 'Встановити (безкоштовно) (скоро)...' },
+									];
+
+									//створення посилань на поточну сторінку на іншу мову
+									for (let i = 0; i < arrBaseLangLinks.length; i++) {
+										let strCurentPage = vm.route.path;
+										let strCurentLang = arrBaseLangLinks[1].strId;
+										if (strCurentPage.indexOf('/en/') !== -1) {
+											strCurentPage = strCurentPage.replace('/en/', '/');
+											strCurentLang = arrBaseLangLinks[0].strId;
+										}
+
+										if (strCurentLang === arrBaseLangLinks[i].strId) {
+											//заміна посилання в навбарі
+											if (objNavbar.querySelector('#' + arrBaseLangLinks[i].strId)) {
+												objNavbar.querySelector('#' + arrBaseLangLinks[i].strId).remove();
+											}
+											if (objMobileMenu.querySelector('#' + arrBaseLangLinks[i].strId + '_mobile')) {
+												objMobileMenu.querySelector('#' + arrBaseLangLinks[i].strId + '_mobile').remove();
+											}
+											//заміна посилання в навбарі (назва біля логотипу на головну сторінку)
+											if (objHeader.querySelector('#home-link')) {
+												objHeader.querySelector('#home-link').href = arrBaseLangLinks[i].strLink + '/';
+											}
+											//заміна напису на кнопці скачування в хедері
+											const arrButtons = objHeader.querySelectorAll('.header-link-btn');
+											if (arrButtons.length > 0) {
+												for (let j = 0; j < arrButtons.length; j++) {
+													if (arrButtons[j].innerHTML !== arrBaseLangLinks[i].strDownloadButton) {
+														arrButtons[j].innerHTML = arrBaseLangLinks[i].strDownloadButton;
+													}
+												}
+											}
+										} else {
+											if (!objNavbar.querySelector('#' + arrBaseLangLinks[i].strId)) {
+												const objNavbarLink = document.createElement('a');
+												objNavbarLink.href = arrBaseLangLinks[i].strLink + strCurentPage;
+												objNavbarLink.id = arrBaseLangLinks[i].strId;
+												objNavbarLink.innerHTML = arrBaseLangLinks[i].strTitle;
+												objNavbarLink.classList.add('nav-link');
+												objNavbar.prepend(objNavbarLink);
+											} else {
+												objNavbar.querySelector('#' + arrBaseLangLinks[i].strId).href = arrBaseLangLinks[i].strLink + strCurentPage;
+											}
+
+											if (!objMobileMenu.querySelector('#' + arrBaseLangLinks[i].strId + '_mobile')) {
+												const objNavbarLink = document.createElement('a');
+												objNavbarLink.href = arrBaseLangLinks[i].strLink + strCurentPage;
+												objNavbarLink.id = arrBaseLangLinks[i].strId + '_mobile';
+												objNavbarLink.innerHTML = arrBaseLangLinks[i].strTitle;
+												objNavbarLink.classList.add('nav-link');
+												objMobileMenu.prepend(objNavbarLink);
+											} else {
+												objMobileMenu.querySelector('#' + arrBaseLangLinks[i].strId + '_mobile').href = arrBaseLangLinks[i].strLink + strCurentPage;
+											}
+										}
+									}
+								}
+							}
+
+							const objMainBlock = Docsify.dom.find('main');
+							if (objMainBlock && !objMainBlock.classList.contains('background-done')) {
+								objMainBlock.classList.add('background-done');
+								const objBackContainer = document.createElement('div');
+								objBackContainer.classList.add('background');
+								objMainBlock.appendChild(objBackContainer);
+								for (let i = 1; i < 4; i++) {
+									const objBooble = document.createElement('div');
+									objBooble.classList.add('blob');
+									objBooble.classList.add('blob' + i);
+									objBackContainer.appendChild(objBooble);
+								}
+							}
+
+							const objArticleBlock = Docsify.dom.find('article');
+							if (objArticleBlock && !objMainBlock.classList.contains('container')) {
+								objArticleBlock.classList.add('container');
+								objArticleBlock.classList.add('content-column');
+							}
+						});
+					},
+				],
+			};
+		</script>
+		<script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+		<script src="//cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+		<!-- Пплагін збільшення зображень -->
+		<script src="//unpkg.com/docsify/lib/plugins/zoom-image.min.js">
+			mediumZoom('img', {
+			    background: 'rgba(0, 0, 0, 0.8)' // Темний фон з прозорістю 80%
+			});
+		</script>
+	</body>
 </html>
