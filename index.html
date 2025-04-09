@@ -27,7 +27,7 @@
                 </nav>
                 
                 <div class="md:ml-6 hidden md:block">
-                    <a href="#/" class="btn_green px-4 py-2 rounded-md transition duration-300">Встановити (скоро)</a>
+                    <a href="#/" class="btn_green px-4 py-2 rounded-md transition duration-300 header-link-btn">Встановити (скоро)</a>
                 </div>
                 
                 <button class="md:hidden focus:outline-none" id="menu-btn" onclick="document.getElementById('mobile-menu').classList.toggle('hidden');">
@@ -41,7 +41,7 @@
             <div class="md:hidden hidden mt-4" id="mobile-menu">
                 <div class="flex flex-col space-y-3 items-center" id="mobile-menu-items">
                     <span class="theme-toggle" onclick="Docsify.dom.find('head link[data-theme=\'dark\']').disabled = !Docsify.dom.find('head link[data-theme=\'dark\']').disabled;document.body.classList.toggle('dark-theme');if(localStorage.getItem('THEME_DARK')===null){localStorage.setItem('THEME_DARK', true);}else{localStorage.setItem('THEME_DARK', !(localStorage.getItem('THEME_DARK')==='true'));}"></span>
-                    <a href="#/" target="_blank" class="btn_green_huge px-4 py-2 rounded-md transition duration-300">Встановити (скоро)</a>
+                    <a href="#/" target="_blank" class="btn_green_huge px-4 py-2 rounded-md transition duration-300 header-link-btn">Встановити (скоро)</a>
                 </div>
             </div>
         </div>
@@ -104,9 +104,10 @@
                                     if(objNavbar.classList.contains('no-badge')){objNavbar.classList.remove('no-badge');}
                                     //перелік мов
                                     const arrBaseLangLinks = [
-                                        {"strLink":"#/en","strTitle":"English","strId":"En-lang-switch"},
-                                        {"strLink":"#","strTitle":"Українською","strId":"Ua-lang-switch"}
+                                        {"strLink":"#/en","strTitle":"English","strId":"En-lang-switch","strDownloadButton":"Install (free) (soon)..."},
+                                        {"strLink":"#","strTitle":"Українською","strId":"Ua-lang-switch","strDownloadButton":"Встановити (безкоштовно) (скоро)..."}
                                     ];
+
                                     //створення посилань на поточну сторінку на іншу мову
                                     for (let i = 0; i < arrBaseLangLinks.length; i++) {
                                         let strCurentPage = vm.route.path;
@@ -122,6 +123,15 @@
                                             if(objMobileMenu.querySelector("#"+arrBaseLangLinks[i].strId+"_mobile")) {objMobileMenu.querySelector("#"+arrBaseLangLinks[i].strId+"_mobile").remove();}
                                             //заміна посилання в навбарі (назва біля логотипу на головну сторінку)
                                             if( objHeader.querySelector("#home-link") ) {objHeader.querySelector("#home-link").href = arrBaseLangLinks[i].strLink+"/";}
+                                            //заміна напису на кнопці скачування в хедері
+                                            const arrButtons = objHeader.querySelectorAll('.header-link-btn');
+                                            if(arrButtons.length > 0){
+                                                for (let j = 0; j < arrButtons.length; j++) {
+                                                    if(arrButtons[j].innerHTML !== arrBaseLangLinks[i].strDownloadButton){
+                                                        arrButtons[j].innerHTML = arrBaseLangLinks[i].strDownloadButton;
+                                                    }
+                                                }
+                                            }
                                         }else{
                                             
                                             if(!objNavbar.querySelector("#"+arrBaseLangLinks[i].strId)){

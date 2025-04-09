@@ -373,7 +373,7 @@ Simply enter the formula **PRICETOTEXT()** (`=PRICETOTEXT("123")`, `=PRICETOTEXT
 </section>
 
 <!-- FAQ Section -->
-<section class="py-20">
+<section class="py-20" id="faq">
 
 <div class="text-center mb-16">
 <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Frequently Asked Questions</h1>
