@@ -2,17 +2,94 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta charset="UTF-8" />
-    <title>Price to text - Перетворення чисел у слова для Google Sheets™</title>
-    <link rel="icon" type="image/x-icon" href="files/img/icon-128x128px.png">
-    <link rel="stylesheet" href="files/css/vue.css" />
-    <link rel="stylesheet" data-theme="dark" href="files/css/dark.css" disabled />
-    <link rel="stylesheet" href="files/css/my.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta charset="UTF-8" />
+      
+        <!-- ================================================== -->
+        <!-- ==                Основна Інформація            == -->
+        <!-- ================================================== -->
+      
+        <title>Price to text - Перетворення чисел у слова для Google Sheets™</title>
+        <link rel="icon" type="image/x-icon" href="files/img/icon-128x128px.png">
+      
+        <!-- ================================================== -->
+        <!-- ==                  SEO Мета-теги               == -->
+        <!-- ================================================== -->
+      
+        <!-- Опис (Description) - короткий опис для пошукових систем -->
+        <meta name="description" content="Безкоштовний додаток 'Число-Слово' (Price to text) для Google Sheets™. Легко конвертуйте суми, ціни та числа у слова українською, англійською, російською. Ідеально для рахунків." lang="uk">
+        <meta name="description" content="Free 'Price to text' add-on for Google Sheets™. Easily convert amounts, prices & numbers into words in Ukrainian, English, Russian. Perfect for invoices." lang="en">
+      
+        <!-- Ключові слова (Keywords) -->
+        <meta name="keywords" content="число в слова, сума прописом, гугл таблиці, google sheets, додаток, розширення, конвертер чисел, ціна в текст, прописом, рахунок-фактура, акт, фінансові документи, гривні прописом, долари прописом, українською, англійською, російською, безкоштовно, bvstud.io" lang="uk">
+        <meta name="keywords" content="number to words, price to text, amount in words, google sheets, add-on, extension, number converter, sheets function, spell out numbers, invoice, financial documents, UAH in words, USD in words, RUB in words, Ukrainian, English, Russian, free, bvstud.io" lang="en">
+      
+        <!-- Автор -->
+        <meta name="author" content="bvstud.io">
+      
+        <!-- Канонічне посилання  -->
+        <link rel="canonical" href="https://p2t.bvsutd.io/" />
+      
+        <!-- ================================================== -->
+        <!-- ==         Open Graph (Facebook, etc.)          == -->
+        <!-- ================================================== -->
+      
+        <!-- Назва для соцмереж -->
+        <meta property="og:title" content="Price to text - Перетворення чисел у слова для Google Sheets™" />
+      
+        <!-- Опис для соцмереж -->
+        <meta property="og:description" content="Встановіть безкоштовний додаток 'Число-Слово' для Google Sheets™ та легко конвертуйте суми і ціни у слова. Підтримка UAH, USD, RUB." />
+      
+        <!-- Тип контенту -->
+        <meta property="og:type" content="website" />
+      
+        <!-- URL сторінки -->
+        <meta property="og:url" content="https://p2t.bvsutd.io/" /> 
+      
+        <!-- Зображення для попереднього перегляду -->
+        <meta property="og:image" content="https://p2t.bvsutd.io/files/img/images_1 - COVER.jpg" />
+        <meta property="og:image:width" content="2084" />
+        <meta property="og:image:height" content="1563" />
+        <!-- Альтернативне/менше зображення (логотип) -->
+        <meta property="og:image" content="files/img/icon-128x128px.png" />
+        <meta property="og:image:width" content="128" />
+        <meta property="og:image:height" content="128" />
+      
+      
+        <!-- Локалізація -->
+        <meta property="og:locale" content="uk_UA" />
+        <meta property="og:locale:alternate" content="en_US" />
+      
+        <!-- Назва сайту -->
+        <meta property="og:site_name" content="Число-Слово (Price to text)" />
+      
+      
+        <!-- ================================================== -->
+        <!-- ==             Twitter Card Tags                == -->
+        <!-- ================================================== -->
+      
+        <!-- Тип картки (summary_large_image потребує великого зображення) -->
+        <meta name="twitter:card" content="summary_large_image" />
+      
+        <!-- Назва для Twitter -->
+        <meta name="twitter:title" content="Price to text - Перетворення чисел у слова для Google Sheets™" />
+      
+        <!-- Опис для Twitter -->
+        <meta name="twitter:description" content="Безкоштовний додаток для Google Sheets™ для конвертації сум та цін у слова (UAH, USD, RUB). Ідеально для рахунків та документів." />
+      
+        <!-- Зображення для Twitter (має бути тим самим, що й og:image для large card) -->
+        <meta name="twitter:image" content="https://p2t.bvsutd.io/files/img/images_1 - COVER.jpg" /> 
+      
+        <!-- ================================================== -->
+        <!-- ==             Підключення Стилів та Скриптів   == -->
+        <!-- ================================================== -->
+        <link rel="stylesheet" href="files/css/vue.css" />
+        <link rel="stylesheet" data-theme="dark" href="files/css/dark.css" disabled />
+        <link rel="stylesheet" href="files/css/my.css" />
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
   <body>
     <header class="v-cloak shadow-md fixed w-full z-50">
         <div class="container mx-auto px-6 py-3">
