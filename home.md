@@ -7,7 +7,7 @@
 </div>
 <div class="hidden lg:block">
 
-![app-logo](files/img/icon-128x128px.png ':no-zoom')      
+![app-logo](files/img/icon-128x128px.png ':no-zoom')
 
 </div>
 
@@ -24,8 +24,6 @@
       <iframe width="560" height="415" src="https://www.youtube.com/embed/sYJVCoxZo2c?si=qLpW9EfC6ddM2NHc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
    </div>
 </div>
-
-
 
 <!-- About Section -->
 <section id="about" class="py-20 theme-bg-lighter">
@@ -75,7 +73,6 @@
 </div>
 
 </section>
-
 
 <!-- Features Section -->
 <section id="features" class="py-20">
@@ -263,7 +260,6 @@
 
 </section>
 
-
 <!-- Pricing Section -->
 <section id="pricing" class="py-20">
 
@@ -318,11 +314,10 @@
 </div>
 
 <div class="mt-12 text-center">
-<p class="">Потрібен корпоративний тариф або індивідуальне рішення? <a href="#/support.md" class="text-blue-600 hover:underline">Зв'яжіться з нами</a></p>
+<p class="">Потрібен корпоративний тариф або індивідуальне рішення? <a href="#/support" class="text-blue-600 hover:underline">Зв'яжіться з нами</a></p>
 </div>
 
 </section>
-
 
 <!-- Download Section -->
 <section id="download" class="py-20 bg-theme-primary text-white">
@@ -465,10 +460,10 @@
 
 <div>
 <h3 class="text-xl font-semibold mb-4" style="margin: 0;">Правова інформація</h3>
-<ul class="space-y-2">
-<li><a href="#/privacy-policy.md" class="text-gray-400 hover:text-white transition duration-300">Політика приватності</a></li>
-<li><a href="#/terms-of-service.md" class="text-gray-400 hover:text-white transition duration-300">Умови обслуговування</a></li>
-<li><a href="#/support.md" class="text-gray-400 hover:text-white transition duration-300">Підтримка</a></li>
+<ul class="space-y-2 mt-4">
+<li><a href="#/privacy-policy" class="text-gray-400 hover:text-white transition duration-300">Політика приватності</a></li>
+<li><a href="#/terms-of-service" class="text-gray-400 hover:text-white transition duration-300">Умови обслуговування</a></li>
+<li><a href="#/support" class="text-gray-400 hover:text-white transition duration-300">Підтримка</a></li>
 </ul>
 </div>
 
