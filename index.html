@@ -104,7 +104,7 @@
                 </nav>
                 
                 <div class="md:ml-6 hidden md:block">
-                    <a href="#/" class="btn_green px-4 py-2 rounded-md transition duration-300 header-link-btn">Встановити (скоро)</a>
+                    <a href="https://workspace.google.com/marketplace/app/foo/676635178819" target="_blank" class="btn_green px-4 py-2 rounded-md transition duration-300 header-link-btn">Встановити</a>
                 </div>
                 
                 <button class="md:hidden focus:outline-none" id="menu-btn" onclick="document.getElementById('mobile-menu').classList.toggle('hidden');">
@@ -118,7 +118,7 @@
             <div class="md:hidden hidden mt-4" id="mobile-menu">
                 <div class="flex flex-col space-y-3 items-center" id="mobile-menu-items">
                     <span class="theme-toggle" onclick="Docsify.dom.find('head link[data-theme=\'dark\']').disabled = !Docsify.dom.find('head link[data-theme=\'dark\']').disabled;document.body.classList.toggle('dark-theme');if(localStorage.getItem('THEME_DARK')===null){localStorage.setItem('THEME_DARK', true);}else{localStorage.setItem('THEME_DARK', !(localStorage.getItem('THEME_DARK')==='true'));}"></span>
-                    <a href="#/" target="_blank" class="btn_green_huge px-4 py-2 rounded-md transition duration-300 header-link-btn">Встановити (скоро)</a>
+                    <a href="https://workspace.google.com/marketplace/app/foo/676635178819" target="_blank" class="btn_green_huge px-4 py-2 rounded-md transition duration-300 header-link-btn">Встановити</a>
                 </div>
             </div>
         </div>
@@ -143,7 +143,7 @@
                 data() {
                     return {
                         strSiteUrl: window.location.origin,
-                        objAppDownload: {"link":{"ua":"#/","en":"#/en/"},"ua":"Встановити (безкоштовно) (скоро)...","en":"Install (free) (soon)..."},
+                        objAppDownload: {"link":{"ua":"https://workspace.google.com/marketplace/app/foo/676635178819","en":"https://workspace.google.com/marketplace/app/foo/676635178819"},"ua":"Встановити (безкоштовно)","en":"Install (free)"},
                         objAppName: {"ua":'Ціна в текст',"en":'Price to text'},
                         objMainSlogan: {"ua":'Перетворіть числа в слова автоматично!',"en":'Convert numbers to words automatically!'},
                         objSubSlogan: {"ua":'Додаток для Google Sheets™, який спрощує вашу роботу з фінансовими документами.',"en":'An add-on for Google Sheets™ that simplifies your work with financial documents.'}
@@ -180,8 +180,8 @@
                                     if(objNavbar.classList.contains('no-badge')){objNavbar.classList.remove('no-badge');}
                                     //перелік мов
                                     const arrBaseLangLinks = [
-                                        {"strLink":"#/en","strTitle":"English","strId":"En-lang-switch","strDownloadButton":"Install (free) (soon)..."},
-                                        {"strLink":"#","strTitle":"Українською","strId":"Ua-lang-switch","strDownloadButton":"Встановити (безкоштовно) (скоро)..."}
+                                        {"strLink":"#/en","strTitle":"English","strId":"En-lang-switch","strDownloadButton":"Install (free)"},
+                                        {"strLink":"#","strTitle":"Українською","strId":"Ua-lang-switch","strDownloadButton":"Встановити (безкоштовно)"}
                                     ];
 
                                     //створення посилань на поточну сторінку на іншу мову
